@@ -70,3 +70,20 @@ const users = [
     likes: ['fg12cy']
   }
 ]
+
+//
+const personAccount = {
+    firstName: string,
+    lastName: string,
+    incomes: string,
+    expenses: string,
+    totalIncome: () => {},
+    totalExpense: () => {},
+    accountInfo: () => {},
+    addIncome: () => {},
+    addExprense: () => {},
+    accountBalance: () => {}
+}
+
+
+
