@@ -1,0 +1,97 @@
+body {
+    background-color: black;
+    color: white;
+    margin: 0; /* Loại bỏ margin mặc định */
+    padding: 0; /* Loại bỏ padding mặc định */
+}
+
+h1 {
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    text-transform: capitalize;
+    font-family: "Arial", sans-serif;
+    margin-bottom: 40px; /* Khoảng cách 20px với phần tử bên dưới */
+}
+
+#star-night {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#weight-calculation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    position: relative;
+    top: -50px;
+}
+
+#massInput {
+    width: 30%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    font-size: 10px;
+}
+
+#objectSelector {
+    width: 30%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    font-size: 10px;
+}
+
+#calculateButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(128, 128, 128);
+    color: black;
+    cursor: pointer;
+    font-size: 10px;
+}
+
+#imageContainer {
+    width: 80%;
+    height: 30px;
+    background-color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#objectImage {
+    display: none;
+    max-height: 100%;
+    border-radius: 10px;
+    text-align: center;
+    margin-right: 90px;
+}
+
+#text {
+    display: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    font-size: 16px;
+}
+

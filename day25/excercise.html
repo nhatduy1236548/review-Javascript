@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate a weight of an object in a certain planet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Calculate a weight of an object on an planet</h1>
+    <div id="star-night">
+        <div id="weight-calculation">
+            <input type="number" id="massInput" placeholder="Enter mass">
+
+            <select id="objectSelector">
+                <option value="" id="defaultOption">--select planet--</option>
+                <option value="EARTH">EARTH</option>
+                <option value="MOON">MOON</option>
+                <option value="MARS">MARS</option>
+            </select>
+            
+            <button id="calculateButton" onclick="calculateWeight()">Calculate weight</button>
+        </div>
+
+        <div id="imageContainer">  <!-- New div -->
+            <img id="objectImage" src="" alt="Selected object image" style="display: none;">
+            <div id="text"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="excercise1.js"></script>    
+</body>
+</html>
