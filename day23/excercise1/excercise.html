@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 style="text-align: center">Number Generator</h1>
+    <div id="danger"></div>
+    <div id="star-night">
+      <div id="weight-calculation">
+        <input type="text" id="massInput" placeholder="Enter mass" />
+        <button id="calculateButton" onclick="calculateWeight()">
+          Calculate weight
+        </button>
+      </div>
+    </div>
+
+    <div style="width: 100%; display: flex; justify-content: center">
+      <div
+        id="container"
+        style="width: 60%; display: flex; flex-wrap: wrap"
+      ></div>
+    </div>
+    <script>
+      function calculateWeight() {
+        var num = document.getElementById("massInput").value;
+        var validate = document.getElementById("danger");
+        validate.textContent = "Enter number in Input Field.";
+        if (!/^\d+$/.test(num)) {
+          document.getElementById("massInput").marginTop = "0px";
+          validate.textContent = "Enter number in Input Field.";
+          validate.style.color = "red";
+          validate.style.fontSize = "10px";
+          return;
+        }
+        validate.textContent = "";
+        render(num);
+      }
+
+      function isPrime(num) {
+        for (let i = 2; i < num; i++) if (num % i === 0) return false;
+        return num > 1;
+      }
+
+      function render(num) {
+        removeAllchildren();
+        for (let i = 0; i <= num; i++) {
+          let title = document.createElement("div");
+          title.textContent = i;
+          title.style.width = "15%";
+          title.style.height = "50px";
+          title.style.alignItems = "center";
+          title.style.textAlign = "center";
+          title.style.margin = "2px";
+          title.style.paddingTop = "7px";
+          title.style.display = "flex";
+          title.style.justifyContent = "center";
+
+          if (isPrime(i)) {
+            title.style.background = "red";
+          } else if (i % 2 === 0) {
+            title.style.background = "green";
+          } else {
+            title.style.background = "yellow";
+          }
+
+          document.getElementById("container").appendChild(title);
+          document.getElementById("massInput").value = "";
+        }
+      }
+
+      function removeAllchildren() {
+        const myNode = document.getElementById("container");
+        while (myNode.lastElementChild) {
+          myNode.removeChild(myNode.lastElementChild);
+        }
+      }
+      render(10);
+    </script>
+  </body>
+</html>

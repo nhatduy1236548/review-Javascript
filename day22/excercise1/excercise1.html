@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 style="text-align: center">Number Generator</h1>
+    <div style="width: 100%; display: flex; justify-content: center">
+      <div
+        id="container"
+        style="width: 60%; display: flex; flex-wrap: wrap"
+      ></div>
+    </div>
+    <script>
+      function isPrime(num) {
+        for (let i = 2; i < num; i++) if (num % i === 0) return false;
+        return num > 1;
+      }
+
+      for (let i = 0; i <= 101; i++) {
+        let title = document.createElement("div");
+        title.textContent = i;
+        title.style.width = "15%";
+        title.style.height = "50px";
+        title.style.alignItems = "center";
+        title.style.textAlign = "center";
+        title.style.margin = "2px";
+        title.style.paddingTop = "7px";
+        title.style.display = "flex";
+        title.style.justifyContent = "center";
+
+        if (isPrime(i)) {
+          title.style.background = "red";
+        } else if (i % 2 === 0) {
+          title.style.background = "green";
+        } else {
+          title.style.background = "yellow";
+        }
+
+        document.getElementById("container").appendChild(title);
+      }
+    </script>
+  </body>
+</html>

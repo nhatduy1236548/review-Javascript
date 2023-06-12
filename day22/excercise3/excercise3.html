@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 style="text-align: center">Asabeneh Yetayeh challenges in 2020</h1>
+    <div style="width: 100%; display: flex; justify-content: center">
+      <div
+        id="container"
+        style="width: 80%; display: flex; flex-wrap: wrap"
+      ></div>
+    </div>
+
+    <script>
+      const data = [
+        ["30Days Of Python", { Python: ["Numpy", "Pardes"] }, "Done"],
+        [
+          "30Days Of Python",
+          { Python: ["Numpy", "Pardes", "Numpy", "Pardes"] },
+          "Done",
+        ],
+        ["30Days Of Python", { Python: ["Numpy", "Pardes"] }, "Done"],
+        ["30Days Of Python", { Python: ["Numpy", "Pardes"] }, "Done"],
+        ["30Days Of Python", { Python: ["Numpy", "Pardes"] }, "Done"],
+      ];
+      for (let i = 0; i < data.length; i++) {
+        let title1 = document.createElement("div");
+        let title2 = document.createElement("div");
+        let title3 = document.createElement("div");
+        let title4 = document.createElement("div");
+        const values = Object.values(data[i][1])[0];
+
+        let details = document.createElement("details");
+        let summary = document.createElement("summary");
+        summary.textContent = Object.keys(data[i][1])[0];
+
+        let img = document.createElement("img");
+        img.className = "arrow";
+        img.src =
+          "https://fonts.gstatic.com/s/i/materialiconsoutlined/keyboard_arrow_right/v6/24px.svg?download=true";
+
+        details.ontoggle = function () {
+          if (this.open) {
+            img.src =
+              "https://fonts.gstatic.com/s/i/materialiconsoutlined/keyboard_arrow_down/v6/24px.svg?download=true";
+            title1.style.height = 50 + values.length * 15 + "px";
+            title1.style.alignItems = "";
+          } else {
+            img.src =
+              "https://fonts.gstatic.com/s/i/materialiconsoutlined/keyboard_arrow_right/v6/24px.svg?download=true";
+            title1.style.height = "25px";
+            title1.style.alignItems = "center";
+          }
+        };
+
+        for (let j = 0; j < values.length; j++) {
+          let p = document.createElement("p");
+          p.innerText = values[j];
+          p.style.margin = "2px 0px 0px 14px";
+          details.appendChild(p);
+        }
+
+        details.style.display = "flex";
+        details.style.flexDirection = "column";
+        details.appendChild(summary);
+        title1.style.width = "100%";
+        title1.style.display = "flex";
+        title1.style.height = "25px";
+        title1.style.padding = "5px 15px 5px 15px";
+        title1.style.justifyContent = "space-between";
+        title1.style.alignItems = "center";
+        title2.style.textDecoration = "underline";
+        title2.style.color = "purple";
+        title2.textContent = data[i][0];
+        title3.appendChild(details);
+        title4.textContent = data[i][2];
+
+        if (i == 0) {
+          title1.style.background = "green";
+        } else if (i == 1) {
+          title1.style.background = "yellow";
+        } else {
+          title1.style.background = "red";
+        }
+
+        title1.appendChild(title2);
+        title1.appendChild(title3);
+        title1.appendChild(title4);
+        document.getElementById("container").appendChild(title1);
+      }
+    </script>
+  </body>
+</html>

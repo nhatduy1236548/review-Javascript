@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 style="text-align: center">Nhấn Enter và j</h1>
+    <div id="contrainer">
+      <div id="text">
+        Press and keyboard &nbsp
+        <div id="key"></div>
+      </div>
+      <div id="circle" style="text-align: center"></div>
+    </div>
+
+    <script>
+      const array = { 32: "Enter", 106: "j" };
+      let arr = [32, 106];
+      document.body.addEventListener("keypress", (e) => {
+        console.log(e.keyCode);
+        if (arr.includes(e.keyCode)) {
+          document.getElementById("circle").textContent = e.keyCode;
+          document.getElementById("key").textContent = " " + array[e.keyCode];
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container" style="width: 60%; display: flex; flex-wrap: wrap">
+      text
+    </div>
+
+    <script>
+      //Loop through the nodeList and get the text content of each paragraph
+
+      const children = [...parent.document.querySelectorAll("body")];
+      children.forEach((child) => {
+        console.log("tag: ", child);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 style="text-align: center">Asabeneh Yetayeh challenges in 2020</h1>
+    <div style="width: 100%; display: flex; justify-content: center">
+      <div
+        id="container"
+        style="width: 80%; display: flex; flex-wrap: wrap"
+      ></div>
+    </div>
+
+    <script>
+      const data = [
+        "30DayOfPython Challenges in",
+        "30DayOfPython Challenges in",
+        "30DayOfPython Challenges in",
+        "30DayOfPython Challenges in",
+        "30DayOfPython Challenges in",
+        "30DayOfPython Challenges in",
+      ];
+      for (let i = 0; i < data.length; i++) {
+        let title = document.createElement("div");
+
+        title.textContent = data[i];
+        title.style.width = "100%";
+        title.style.display = "flex";
+        title.style.height = "25px";
+        title.style.padding = "5px 15px 5px 15px";
+        title.style.justifyContent = "space-between";
+        title.style.alignItems = "center";
+
+        if (i == 0) {
+          title.style.background = "green";
+        } else if (i == 1) {
+          title.style.background = "yellow";
+        } else {
+          title.style.background = "red";
+        }
+        document.getElementById("container").appendChild(title);
+      }
+    </script>
+  </body>
+</html>
