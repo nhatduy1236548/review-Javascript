@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* CSS styles for the visualization */
+      #chart {
+        width: 600px;
+        margin: 0 auto;
+      }
+
+      .bar {
+        margin-bottom: 10px;
+        height: 30px;
+        background-color: #4caf50;
+        color: white;
+        text-align: right;
+        line-height: 30px;
+        transition: width 0.5s;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .active {
+        background-color: #2196f3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center; margin-bottom: 15px">
+      World Countries Data
+    </h1>
+    <div
+      style="
+        border: 1px solid gray;
+        width: 95%;
+        text-align: center;
+        margin-bottom: 8px;
+      "
+    ></div>
+    <div style="text-align: center; margin-bottom: 15px">
+      <button
+        id="populationBtn"
+        class="active"
+        onclick="showChart('populationChart')"
+      >
+        Population Chart
+      </button>
+      <button id="languageBtn" onclick="showChart('languageChart')">
+        Language Chart
+      </button>
+    </div>
+    <div id="populationChart"></div>
+    <div id="languageChart" class="hidden"></div>
+    <script>
+      const countries = [
+        { name: "China", population: 1444216107 },
+        { name: "India", population: 1393409038 },
+        { name: "United States", population: 332915073 },
+        { name: "Indonesia", population: 276361783 },
+        { name: "Pakistan", population: 225199937 },
+        { name: "Brazil", population: 213993437 },
+        { name: "Nigeria", population: 211400708 },
+        { name: "Bangladesh", population: 166303498 },
+        { name: "Russia", population: 145912025 },
+        { name: "Mexico", population: 130262216 },
+      ];
+
+      const languages = [
+        { name: "Mandarin Chinese", speakers: 918000000 },
+        { name: "Spanish", speakers: 460000000 },
+        { name: "English", speakers: 379000000 },
+        { name: "Hindi", speakers: 341000000 },
+        { name: "Bengali", speakers: 228000000 },
+        { name: "Portuguese", speakers: 221000000 },
+        { name: "Russian", speakers: 154000000 },
+        { name: "Japanese", speakers: 128000000 },
+        { name: "Western Punjabi", speakers: 109000000 },
+        { name: "Marathi", speakers: 105000000 },
+      ];
+
+      function createBarChart(data, containerId) {
+        const container = document.getElementById(containerId);
+
+        while (container.hasChildNodes()) {
+          container.removeChild(container.firstChild);
+        }
+
+        data.sort((a, b) => b.value - a.value);
+
+        data.forEach((item) => {
+          const box = document.createElement("div");
+          const box1 = document.createElement("div");
+          const box2 = document.createElement("div");
+          const title = document.createElement("div");
+          const bar = document.createElement("div");
+          const count = document.createElement("div");
+          title.textContent = item.name;
+          title.style.width = "20%";
+          bar.style.width = (item.value / data[0].value) * 100 + "%";
+          bar.innerHTML = "&nbsp;";
+          bar.style.background = "yellow";
+          count.textContent = item.value;
+
+          box.style.display = "flex";
+          box.style.justifyContent = "space-between";
+          box.style.marginBottom = "5px";
+          box1.style.display = "flex";
+          box1.style.justifyContent = "space-between";
+          box1.style.width = "75%";
+          box2.style.width = "80%";
+          box.appendChild(title);
+          box2.appendChild(bar);
+          box1.appendChild(box2);
+          box1.appendChild(count);
+          box.appendChild(box1);
+          container.appendChild(box);
+        });
+      }
+
+      function showChart(chartId) {
+        const populationBtn = document.getElementById("populationBtn");
+        const languageBtn = document.getElementById("languageBtn");
+        const populationChart = document.getElementById("populationChart");
+        const languageChart = document.getElementById("languageChart");
+
+        populationBtn.classList.remove("active");
+        languageBtn.classList.remove("active");
+
+        populationChart.classList.add("hidden");
+        languageChart.classList.add("hidden");
+
+        if (chartId === "populationChart") {
+          populationBtn.classList.add("active");
+          populationChart.classList.remove("hidden");
+          createBarChart(
+            countries.map((country) => ({
+              name: country.name,
+              value: country.population,
+            })),
+            "populationChart"
+          );
+        } else if (chartId === "languageChart") {
+          languageBtn.classList.add("active");
+          languageChart.classList.remove("hidden");
+          createBarChart(
+            languages.map((language) => ({
+              name: language.name,
+              value: language.speakers,
+            })),
+            "languageChart"
+          );
+        }
+      }
+
+      showChart("populationChart");
+    </script>
+  </body>
+</html>
