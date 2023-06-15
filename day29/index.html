@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div style="margin-left: 20px">
+      <div id="format" style="display: flex; width: 100%">
+        <div id="text">30 DAYS OF &nbsp;</div>
+        <div id="text1">JAVASCRIPT</div>
+      </div>
+      <div id="text2">CHALLENGE 2020</div>
+      <div id="text3">ASABE YETAYEH</div>
+    </div>
+
+    <script>
+      var random = "row";
+      document.getElementById("format").style.display = "flex";
+      function getRandomColor() {
+        let maxVal = 0xffffff; // 16777215
+        let randomNumber = Math.random() * maxVal;
+        randomNumber = Math.floor(randomNumber);
+        let randColor = randomNumber.toString(16);
+        return randColor;
+      }
+
+      function ChangeColor(containerId) {
+        const text = document.getElementById(containerId);
+        text.style.fontSize = "60px";
+        let innerHTML = "";
+        for (let i = 0; i < text.textContent.length; i++) {
+          let letter = text.textContent[i];
+
+          if (letter == " ") {
+            innerHTML += " ";
+            continue;
+          }
+          let color = getRandomColor();
+          console.log(color);
+          innerHTML += `<span style="color: #${color};">${letter}</span>`;
+        }
+        text.innerHTML = innerHTML;
+      }
+      function ChangeColorRandom() {
+        ChangeColor("text");
+        ChangeColor("text1");
+        ChangeColor("text2");
+        ChangeColor("text3");
+        document.body.style.backgroundColor = "#" + getRandomColor();
+      }
+      function Format() {
+        const format = document.getElementById("format");
+        if ((random = "row")) {
+          format.style.flexDirection = "column";
+          random = "column";
+        }
+      }
+      setInterval(ChangeColorRandom, 1000);
+      setTimeout(Format, 3000);
+    </script>
+  </body>
+</html>

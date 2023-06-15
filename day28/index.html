@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Player Scoreboard</title>
+    <style>
+      /* CSS styles for the input and button */
+      tr {
+        margin-right: 5px;
+        margin-bottom: 5px;
+        display: flex;
+        justify-content: space-between;
+        background: gray;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 style="text-align: center">
+      30 Days Of Javascript Challenge LeaderBoard
+    </h2>
+    <div style="display: flex; justify-content: center; width: 100%">
+      <div style="text-align: center">
+        <input
+          id="FirstName"
+          type="text"
+          placeholder="First name"
+          style="width: 18%"
+        />
+        <input
+          id="LastName"
+          type="text"
+          placeholder="Last name"
+          style="width: 18%"
+        />
+        <input
+          id="country"
+          type="text"
+          placeholder="Country"
+          style="width: 18%"
+        />
+        <input
+          id="Player score"
+          type="number"
+          placeholder="Score"
+          style="width: 18%"
+        />
+        <button onclick="addPlayer()" style="width: 15%">Add Player</button>
+      </div>
+    </div>
+    <div
+      id="notice"
+      style="text-align: center; margin-top: 5px; margin-bottom: 10px"
+    ></div>
+    <div style="display: flex; justify-content: center">
+      <table
+        id="playerTable"
+        style="display: flex; flex-direction: column; width: 50%"
+      ></table>
+    </div>
+
+    <script type="text/javascript" src="script/script.js"></script>
+  </body>
+</html>
