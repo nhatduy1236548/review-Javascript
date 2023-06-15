@@ -16,8 +16,8 @@
     </div>
 
     <script>
-      var random = "row";
-      document.getElementById("format").style.display = "flex";
+      const format = document.getElementById("format");
+      format.style.display = "flex";
       function getRandomColor() {
         let maxVal = 0xffffff; // 16777215
         let randomNumber = Math.random() * maxVal;
@@ -38,24 +38,18 @@
             continue;
           }
           let color = getRandomColor();
-          console.log(color);
           innerHTML += `<span style="color: #${color};">${letter}</span>`;
         }
         text.innerHTML = innerHTML;
       }
       function ChangeColorRandom() {
-        ChangeColor("text");
-        ChangeColor("text1");
-        ChangeColor("text2");
-        ChangeColor("text3");
+        ["text", "text1", "text2", "text3"].forEach((items) =>
+          ChangeColor(items)
+        );
         document.body.style.backgroundColor = "#" + getRandomColor();
       }
       function Format() {
-        const format = document.getElementById("format");
-        if ((random = "row")) {
-          format.style.flexDirection = "column";
-          random = "column";
-        }
+        format.style.flexDirection = "column";
       }
       setInterval(ChangeColorRandom, 1000);
       setTimeout(Format, 3000);
