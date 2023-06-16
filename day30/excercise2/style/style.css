@@ -1,0 +1,28 @@
+input {
+  border: 2px solid black;
+  width: 300px;
+}
+
+div div {
+  color:red;
+  font-size: 10px;
+  margin-top: 5px;
+}
+
+form {
+  width: 300px;
+}
+
+#submit {
+  width: 100px;
+}
+
+#format {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style/style.css" />
+  </head>
+  <body>
+    <h1 style="text-align: center; margin-bottom: 15px">
+      World Countries Data
+    </h1>
+    <div id="search">
+      <div id="inform" style="display: none">
+        Countries start &nbsp;
+        <div id="valueInput"></div>
+        &nbsp; are &nbsp;
+        <div id="number"></div>
+      </div>
+      <div style="text-align: center; margin-bottom: 15px">
+        <button id="populationBtn" class="active" onclick="startingWord()">
+          STARTING WORD
+        </button>
+        <button id="languageBtn" onclick="searchWithAnyWord()">
+          SEARCH WITH ANY WORD
+        </button>
+      </div>
+      <div style="text-align: center">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Nhập từ khóa"
+          onchange="action()"
+        />
+      </div>
+      <div style="width: 100%; display: flex; justify-content: center">
+        <div
+          id="container"
+          style="width: 60%; display: flex; flex-wrap: wrap"
+        ></div>
+      </div>
+
+      <button onclick="scrollToChart()">Go to Chart</button>
+    </div>
+
+    <div id="chart">
+      <div
+        style="
+          border: 1px solid gray;
+          width: 95%;
+          text-align: center;
+          margin-bottom: 8px;
+        "
+      ></div>
+      <div style="text-align: center; margin-bottom: 15px">
+        <button
+          id="populationBtn"
+          class="active"
+          onclick="showChart('populationChart')"
+        >
+          Population Chart
+        </button>
+        <button id="languageBtn" onclick="showChart('languageChart')">
+          Language Chart
+        </button>
+      </div>
+      <div id="populationChart"></div>
+      <div id="languageChart" class="hidden"></div>
+      <button onclick="scrollToSearch()">Back to Search</button>
+    </div>
+
+    <script type="text/javascript" src="script/script.js"></script>
+  </body>
+</html>
