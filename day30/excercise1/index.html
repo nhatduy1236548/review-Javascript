@@ -7,66 +7,70 @@
     <link rel="stylesheet" href="style/style.css" />
   </head>
   <body>
-    <h1 style="text-align: center; margin-bottom: 15px">
-      World Countries Data
-    </h1>
+    <h1 id="title" style="text-align: center">World Countries Data</h1>
+    <h6 tyle="text-align: center;">Currently, we have 250 countries</h6>
+    <div id="inform">
+      <div id="valueInput"></div>
+      <div>&nbsp; Countries the satusfied search</div>
+    </div>
+
     <div id="search">
-      <div id="inform" style="display: none">
-        Countries start &nbsp;
-        <div id="valueInput"></div>
-        &nbsp; are &nbsp;
-        <div id="number"></div>
-      </div>
-      <div style="text-align: center; margin-bottom: 15px">
-        <button id="populationBtn" class="active" onclick="startingWord()">
-          STARTING WORD
+      <div id="button" style="text-align: center; margin-bottom: 10px">
+        <button id="populationBtn" class="active" onclick="sortByName()">
+          NAME
         </button>
-        <button id="languageBtn" onclick="searchWithAnyWord()">
-          SEARCH WITH ANY WORD
+        <button id="languageBtn" onclick="sortByCapital()">CAPITAL</button>
+        <button id="populationBtn" onclick="sortByPopulation()">
+          POPULATION
+        </button>
+        <button class="graph-button" onclick="scrollToChart()">
+          <span class="bar" style="height: 20px"></span>
+          <span class="bar" style="height: 40px"></span>
+          <span class="bar" style="height: 30px"></span>
+          <span class="bar" style="height: 50px"></span>
         </button>
       </div>
-      <div style="text-align: center">
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Nhập từ khóa"
-          onchange="action()"
-        />
+      <div style="text-align: center; width: 80%">
+        <input type="text" id="searchInput" placeholder="Nhập từ khóa" />
       </div>
-      <div style="width: 100%; display: flex; justify-content: center">
+      <div
+        style="
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          scroll-behavior: smooth;
+          overflow: auto;
+        "
+      >
         <div
           id="container"
-          style="width: 60%; display: flex; flex-wrap: wrap"
+          style="width: 90%; height: 400px; display: flex; flex-wrap: wrap"
         ></div>
       </div>
-
-      <button onclick="scrollToChart()">Go to Chart</button>
     </div>
 
     <div id="chart">
-      <div
-        style="
-          border: 1px solid gray;
-          width: 95%;
-          text-align: center;
-          margin-bottom: 8px;
-        "
-      ></div>
-      <div style="text-align: center; margin-bottom: 15px">
-        <button
-          id="populationBtn"
-          class="active"
-          onclick="showChart('populationChart')"
-        >
-          Population Chart
-        </button>
-        <button id="languageBtn" onclick="showChart('languageChart')">
-          Language Chart
+      <div style="width: 95%; text-align: center; margin-bottom: 8px">
+        <div style="text-align: center; margin-bottom: 15px">
+          <button
+            id="populationBtn"
+            class="active"
+            onclick="showChart('populationChart')"
+          >
+            Population Chart
+          </button>
+          <button id="languageBtn" onclick="showChart('languageChart')">
+            Language Chart
+          </button>
+        </div>
+        <div id="populationChart"></div>
+        <div id="languageChart" class="hidden"></div>
+        <button class="arrow-button" onclick="scrollToSearch()">
+          <div class="circle">
+            <div class="arrow"></div>
+          </div>
         </button>
       </div>
-      <div id="populationChart"></div>
-      <div id="languageChart" class="hidden"></div>
-      <button onclick="scrollToSearch()">Back to Search</button>
     </div>
 
     <script type="text/javascript" src="script/script.js"></script>

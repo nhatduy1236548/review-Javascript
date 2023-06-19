@@ -1,16 +1,3 @@
-const countries = [
-    { name: "China", population: 1444216107 },
-    { name: "India", population: 1393409038 },
-    { name: "United States", population: 332915073 },
-    { name: "Indonesia", population: 276361783 },
-    { name: "Pakistan", population: 225199937 },
-    { name: "Brazil", population: 213993437 },
-    { name: "Nigeria", population: 211400708 },
-    { name: "Bangladesh", population: 166303498 },
-    { name: "Russia", population: 145912025 },
-    { name: "Mexico", population: 130262216 },
-  ];
-
   const languages = [
     { name: "Mandarin Chinese", speakers: 918000000 },
     { name: "Spanish", speakers: 460000000 },
@@ -25,104 +12,83 @@ const countries = [
   ];
 
   const data = [
-    "ANGOLA",
-    "FIJI",
-    "FINLAND",
-    "ECUADOR",
-    "YEMEN",
-    "BUNGARI",
-    "CHICAGO",
-    "HONEY",
-    "SAN MARIO",
-    "VENEZUELA",
+    { name: "Afghanistan", capital: "Luanda", population: 31825295},
+    { name: "Albania", capital: "Suva", population: 889953},
+    { name: "Andorra", capital: "Helsinki", population: 5517827},
+    { name: "Angola", capital: "Luanda", population: 31825295},
+    { name: "Bangladesh", capital: "Suva", population: 889953},
+    { name: "Belarus", capital: "Helsinki", population: 5517827},
+    { name: "Colombia", capital: "Luanda", population: 31825295},
+    { name: "Estonia", capital: "Suva", population: 889953},
+    { name: "Fiji", capital: "Helsinki", population: 5517827},
+    { name: "Hungary", capital: "Luanda", population: 31825295},
+    { name: "Guyana", capital: "Suva", population: 889953},
+    { name: "Irag", capital: "Helsinki", population: 5517827},
   ];
   
-function scrollToChart() {
+  function scrollToChart() {
     let chart = document.getElementById("chart");
-    chart.scrollIntoView({behavior: "smooth"});
+    chart.scrollIntoView();
   }
   
   function scrollToSearch() {
-    let search = document.getElementById("search");
-    search.scrollIntoView({behavior: "smooth"});
+    let search = document.getElementById("title");
+    search.scrollIntoView();
   }
 
-  function searchByStar() {
-    const input = document
-      .getElementById("searchInput")
-      .value.toLowerCase();
-    if (!input) return [];
-    const results = data.filter((item) =>
-      item.toLowerCase().startsWith(input)
-    );
+  function search() {
+    const input = document.getElementById("searchInput").value.toLowerCase();
+    const valueInput =document.getElementById('valueInput');
+    const inform =document.getElementById('inform');
+    if (!input) {     
+      inform.style.display ="none";
+      return data
+    }
+    const results = data.filter((item) => {
+      for (let char of input) {
+        if (item.name.toLowerCase().includes(char)) return true;
+      }
+      return false;
+    });
+    inform.style.display ="flex";
+    inform.style.color ="orange";
+    valueInput.textContent = results.length;
     return results;
   }
-
-  function searchByLetter() {
-    const input = document
-      .getElementById("searchInput")
-      .value.toLowerCase();
-    if (!input) return [];
-    const results = data.filter((item) =>
-      item.toLowerCase().includes(input)
-    );
-    return results;
+  
+  function sortByName() {
+    data.sort((a, b) => a.name.localeCompare(b.name));
   }
-
-  var action = searchByStar;
-
-  function startingWord() {
-    action = searchByStar;
+  
+  function sortByCapital() {
+    data.sort((a, b) => a.capital.localeCompare(b.capital));
   }
-
-  function searchWithAnyWord() {
-    action = searchByLetter;
+  
+  function sortByPopulation() {
+    data.sort((a, b) => a.population - b.population);
   }
-
+  
   function render(results) {
     const container = document.getElementById("container");
-    const searchInput = document.getElementById("searchInput");
-    searchInput;
-    if (results.length) {
-      const inform = document.getElementById("inform");
-      const valueInput = document.getElementById("valueInput");
-      const number = document.getElementById("number");
-      inform.style.display = "flex";
-      inform.style.justifyContent = "center";
-      valueInput.textContent = searchInput.value;
-      number.textContent = results.length;
-    } else {
-      const inform = document.getElementById("inform");
-      inform.style.display = "none";
-    }
-
+  
     while (container.hasChildNodes()) {
       container.removeChild(container.firstChild);
     }
-
+  
     for (let i = 0; i < results.length; i++) {
-      let title = document.createElement("div");
-      title.textContent = results[i];
-      title.style.width = "15%";
-      title.style.fontSize = "10px";
-      title.style.height = "50px";
-      title.style.alignItems = "center";
-      title.style.textAlign = "center";
-      title.style.margin = "2px";
-      title.style.paddingTop = "7px";
-      title.style.display = "flex";
-      title.style.justifyContent = "center";
-      title.style.background = "gray";
-
-      document.getElementById("container").appendChild(title);
+      let img = document.createElement("img");
+      img.src = 'images/'+results[i].name + '.png';
+      img.style.width = '15%';
+      img.style.height = '140px';
+      document.getElementById("container").appendChild(img);
     }
   }
-
+  
   setInterval(function () {
-    const results = action();
+    const results = search();
     render(results);
   }, 400);
-
+  
   function createBarChart(data, containerId) {
     const container = document.getElementById(containerId);
 
@@ -178,7 +144,7 @@ function scrollToChart() {
       populationBtn.classList.add("active");
       populationChart.classList.remove("hidden");
       createBarChart(
-        countries.map((country) => ({
+        data.map((country) => ({
           name: country.name,
           value: country.population,
         })),
